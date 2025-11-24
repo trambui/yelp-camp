@@ -27,6 +27,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 // const dbUrl = process.env.DB_URL;
 // const dbUrl = 'mongodb://localhost:27017/yelp-camp';
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+console.log("DB_URL BEING USED:", dbUrl);
 mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
