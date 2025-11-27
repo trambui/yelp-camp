@@ -49,11 +49,11 @@ const seedDB = async () => {
             },
             images: [
                 {
-                    url: 'https://res.cloudinary.com/***REMOVED***/image/upload/YelpCamp/testCampPic.jpg',
+                    url: 'https://res.cloudinary.com/drio9xquw/image/upload/YelpCamp/testCampPic.jpg',
                     filename: 'YelpCamp/testCampPic'
                 },
                 {
-                    url: 'https://res.cloudinary.com/***REMOVED***/image/upload/YelpCamp/testCampPic2.jpg',
+                    url: 'https://res.cloudinary.com/drio9xquw/image/upload/YelpCamp/testCampPic2.jpg',
                     filename: 'YelpCamp/testCampPic2'
                 }
             ]
