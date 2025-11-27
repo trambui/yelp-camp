@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
 const mongoose = require('mongoose');
 const cities = require('./cities');
 const { places, descriptors } = require('./seedHelpers');
@@ -5,14 +8,17 @@ const Campground = require('../models/campground');
 
 mongoose.set('strictQuery', false);
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp')
-    .then(() => {
-        console.log("MongoDB connection successful!");
-    })
-    .catch(err => {
-        console.log("MongoDB connection failed! Error:");
-        console.log(err);
-    });
+const dbUrl = process.env.DB_URL;
+mongoose.connect(dbUrl)
+
+// mongoose.connect('mongodb://localhost:27017/yelp-camp')
+//     .then(() => {
+//         console.log("MongoDB connection successful!");
+//     })
+//     .catch(err => {
+//         console.log("MongoDB connection failed! Error:");
+//         console.log(err);
+//     });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -28,7 +34,7 @@ const seedDB = async () => {
         const random1000 = Math.floor(Math.random() * 1000);
         const price = Math.floor(Math.random() * 20) + 10;
         const camp = new Campground({
-            author: '642ab2dc421a6283e7909bb6',
+            author: '6924069f24ae79cb98c1bf90',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
             // image: 'https://source.unsplash.com/collection/483251',
@@ -43,12 +49,12 @@ const seedDB = async () => {
             },
             images: [
                 {
-                    url: 'https://res.cloudinary.com/***REMOVED***/image/upload/v1684899875/YelpCamp/nn8ecehd7cbyaumnixpu.jpg',
-                    filename: 'YelpCamp/nn8ecehd7cbyaumnixpu'
+                    url: 'https://res.cloudinary.com/***REMOVED***/image/upload/YelpCamp/testCampPic.jpg',
+                    filename: 'YelpCamp/testCampPic'
                 },
                 {
-                    url: 'https://res.cloudinary.com/***REMOVED***/image/upload/v1684899879/YelpCamp/sam4vg7hcgy3m1lea84f.jpg',
-                    filename: 'YelpCamp/sam4vg7hcgy3m1lea84f'
+                    url: 'https://res.cloudinary.com/***REMOVED***/image/upload/YelpCamp/testCampPic2.jpg',
+                    filename: 'YelpCamp/testCampPic2'
                 }
             ]
         })
