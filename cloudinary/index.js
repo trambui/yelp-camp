@@ -7,12 +7,6 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_SECRET
 });
 
-// cloudinary.config({
-//     cloud_name: "***REMOVED***",
-//     api_key: "***REMOVED***",
-//     api_secret: "***REMOVED***"
-//   });
-
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
